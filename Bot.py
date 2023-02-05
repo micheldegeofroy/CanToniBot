@@ -7,7 +7,6 @@ from telepot.loop import MessageLoop
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import subprocess
-import RPi.GPIO as GPIO
 import re
 import os
 import threading
@@ -22,13 +21,10 @@ stream = os.popen('ls -la')
 stream = os.popen('df -h')
 output = stream.readlines()
 
-
 flag1= False
 flag2 = False
-flag3 = False
 flag4 = False
 flag5 = False
-
 
 #Replace with https://www.blockonomics.co API key
 api_key = 'replacewithyourapikey'
