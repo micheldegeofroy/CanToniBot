@@ -127,9 +127,8 @@ sudo echo "0,0" | sudo tee /home/pi/Bots/btcbalance.txt
 
 sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/script.py"
 sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/Bot.py" -P /home/pi/Bots/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/walletcheck.py" -P /home/pi/Bots/
 sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/bot.service" -P /etc/systemd/system/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/wallet.service" -P /etc/systemd/system/
+
 
 # Read the first, second and third line of the botdata.txt file
 replace_value1=$(head -n 1 botdata.txt)
@@ -143,12 +142,6 @@ sed -i "s/replacewithyourbottoken/$replace_value2/g" /home/pi/Bots/Bot.py
 sed -i "s/replacewithadminchatid/$replace_value1/g" /home/pi/Bots/Bot.py 
 sed -i "s/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa/$replace_value3/g" /home/pi/Bots/Bot.py 
 
-# Replace the target value in the walletcheck.py script with the replacement values from botdata.txt
-sed -i "s/replacewithyourapikey/$replace_value4/g" /home/pi/Bots/walletcheck.py 
-sed -i "s/replacewithyourbottoken/$replace_value2/g" /home/pi/Bots/walletcheck.py 
-sed -i "s/replacewithadminchatid/$replace_value1/g" /home/pi/Bots/walletcheck.py 
-sed -i "s/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa/$replace_value3/g" /home/pi/Bots/walletcheck.py 
-
 # Replace the target value in the script.py script with the replacement values from botdata.txt
 sed -i "s/replacewithyourbottoken/$replace_value2/g" /home/pi/script.py
 
@@ -156,12 +149,10 @@ sudo python3 script.py
 sudo rm -r script.py
 
 # Confirm that the replacement has been made
-echo "The Admin User Chat ID, Bot Token and BTC address have been set in script.py & Bot.py & walletcheck.py files."
+echo "The Admin User Chat ID, Bot Token and BTC address have been set in script.py & Bot.py"
 
 sudo systemctl enable bot.service
 sudo systemctl start bot.service
-sudo systemctl enable wallet.service
-sudo systemctl start wallet.service
 
 echo " "
 echo " "
