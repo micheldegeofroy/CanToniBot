@@ -32,17 +32,6 @@ sudo apt install jq -y
 sudo apt install pip -y
 sudo apt install git -y
 
-echo " "
-echo " "
-echo "##########################################"
-echo "Web Interface"
-echo "##########################################"
-echo " "
-echo " "
-
-sudo apt install php7.4 -y
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/index.php" -P /var/www/html/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/favicon.ico" -P /var/www/html/
 
 echo " "
 echo " "
